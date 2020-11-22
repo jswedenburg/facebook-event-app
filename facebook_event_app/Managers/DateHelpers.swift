@@ -19,10 +19,6 @@ class DateHelpers {
         uniqueDaysArray.sort(by: {$0 < $1})
         return uniqueDaysArray
     }
-    
-    
-    
-    
 }
 
 extension Date {
@@ -44,11 +40,5 @@ extension Date {
         
         return calendar.date(from: components) ?? self
         
-    }
-    
-    func eventDateString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h:mm a"
-        return dateFormatter.string(from: self)
     }
 }

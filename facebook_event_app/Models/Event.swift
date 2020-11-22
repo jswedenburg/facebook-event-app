@@ -7,21 +7,38 @@
 
 import Foundation
 
-struct Event: Decodable {
+struct Event: Decodable, Hashable {
     let title: String
     let start: Date
     let end: Date
     
+}
+
+extension Event {
     var startHour: String {
         get {
-            return start.eventDateString()
+            return eventDateString(date: start)
         }
     }
     
     var endHour: String {
         get {
-            return end.eventDateString()
+            return eventDateString(date: end)
         }
+    }
+    
+    var eventSectionHeader: String {
+        get {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEEE, MMM d"
+            return dateFormatter.string(from: start)
+        }
+    }
+    
+    private func eventDateString(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        return dateFormatter.string(from: date)
     }
     
     static func doesOverlap(event: Event, otherEvent: Event) -> Bool {

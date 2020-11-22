@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="-780" y="43"/>
         </scene>
-        <!--Events-->
+        <!--Event Calendar-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="EventViewController" customModule="facebook_event_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="EventListViewController" customModule="facebook_event_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,8 +45,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzi-v0-noc">
-                                                    <rect key="frame" x="112" y="21" width="37" height="17"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                                    <rect key="frame" x="112" y="21" width="37.5" height="19"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -69,14 +69,22 @@
                                                         <constraint firstAttribute="width" constant="2" id="hNQ-9q-Wtt"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCJ-GK-hoO">
+                                                    <rect key="frame" x="112" y="48" width="24.5" height="12"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                                    <color key="textColor" systemColor="systemRedColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="eCJ-GK-hoO" firstAttribute="leading" secondItem="qzi-v0-noc" secondAttribute="leading" id="7mK-EP-6H3"/>
                                                 <constraint firstItem="Vxt-NC-VY4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hme-6T-czc" secondAttribute="trailing" constant="5" id="AYL-Sp-IKE"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="78N-yw-yw8" secondAttribute="bottom" id="B4L-Kv-7fn"/>
                                                 <constraint firstItem="qzi-v0-noc" firstAttribute="top" secondItem="Hme-6T-czc" secondAttribute="top" id="DCL-lb-5Qc"/>
                                                 <constraint firstItem="Hme-6T-czc" firstAttribute="top" secondItem="06t-GO-TdV" secondAttribute="topMargin" constant="10" id="WE9-J0-RN8"/>
                                                 <constraint firstItem="78N-yw-yw8" firstAttribute="top" secondItem="Hme-6T-czc" secondAttribute="bottom" constant="5" id="YLF-JD-ty5"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="qzi-v0-noc" secondAttribute="trailing" constant="10" id="blM-IR-Nqh"/>
+                                                <constraint firstItem="eCJ-GK-hoO" firstAttribute="top" secondItem="qzi-v0-noc" secondAttribute="bottom" constant="8" symbolic="YES" id="dNN-N9-pFR"/>
                                                 <constraint firstAttribute="bottom" secondItem="Vxt-NC-VY4" secondAttribute="bottom" constant="2" id="hBA-Cz-yII"/>
                                                 <constraint firstItem="78N-yw-yw8" firstAttribute="leading" secondItem="Hme-6T-czc" secondAttribute="leading" id="p5d-Fa-Mc0"/>
                                                 <constraint firstItem="Hme-6T-czc" firstAttribute="leading" secondItem="06t-GO-TdV" secondAttribute="leadingMargin" constant="10" id="q8O-7y-7BV"/>
@@ -87,6 +95,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="labelConflict" destination="eCJ-GK-hoO" id="BMz-n3-hJs"/>
                                             <outlet property="labelEventEndTime" destination="78N-yw-yw8" id="rjZ-yM-MUD"/>
                                             <outlet property="labelEventName" destination="qzi-v0-noc" id="tgV-4O-ape"/>
                                             <outlet property="labelEventStartTime" destination="Hme-6T-czc" id="nfD-aG-gc2"/>
@@ -99,7 +108,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Events" id="hDi-dU-3i1"/>
+                    <navigationItem key="navigationItem" title="Event Calendar" id="hDi-dU-3i1"/>
                     <connections>
                         <outlet property="tableView" destination="T8v-8H-03h" id="kTh-TO-Qzz"/>
                     </connections>
@@ -112,6 +121,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

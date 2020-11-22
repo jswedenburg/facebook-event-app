@@ -13,7 +13,7 @@ class facebook_event_appTests: XCTestCase {
     var facebookCalendar: FacebookCalendar!
     
     override func setUpWithError() throws {
-        facebookCalendar = FacebookCalendar.getCalendar()
+        facebookCalendar = FacebookCalendarManager.getCalendar()
     }
 
     override func tearDownWithError() throws {
@@ -21,7 +21,7 @@ class facebook_event_appTests: XCTestCase {
     }
 
     func testEventJsonDeserializesCorrectly() {
-        let events: [Event] = facebookCalendar.events
+        let events: [Event] = facebookCalendar.calendarDays[0].events
         let firstEvent = events[0]
         
         let calendar = NSCalendar.current
@@ -31,7 +31,7 @@ class facebook_event_appTests: XCTestCase {
         let startDateHour = calendar.component(.hour, from: firstEvent.start)
         let startDateMinute = calendar.component(.minute, from: firstEvent.start)
         
-        XCTAssertEqual(events.count, 21)
+        XCTAssertEqual(events.count, 3)
         XCTAssertEqual(firstEvent.title, "Bicycling with Friends")
         XCTAssertEqual(startDateMonth, 11)
         XCTAssertEqual(startDateDay, 1)
@@ -57,11 +57,9 @@ class facebook_event_appTests: XCTestCase {
         
         let nonConfictingEvent1 = Event(title: "", start: date1, end: date2)
         let nonConfictingEvent2 = Event(title: "", start: date3, end: date4)
-        let nonConfictingEvents: [Event] = [nonConfictingEvent1, nonConfictingEvent2]
         
-        let nonConflictingCalendar = FacebookCalendar(events: nonConfictingEvents, dates: [])
         
-        XCTAssertEqual(nonConflictingCalendar.conflictingEvents().count, 0)
+        XCTAssertEqual(Event.doesOverlap(event: nonConfictingEvent2, otherEvent: nonConfictingEvent1), false)
         
         let date5Components = DateComponents(year: 2018, month: 11, day: 7, hour: 9, minute: 0)
         let date5 = calendar.date(from: date5Components)!
@@ -78,22 +76,15 @@ class facebook_event_appTests: XCTestCase {
         let confictingEvent1 = Event(title: "", start: date5, end: date6)
         let confictingEvent2 = Event(title: "", start: date7, end: date8)
         
-        let conflictingCalendar = FacebookCalendar(events: [confictingEvent1, confictingEvent2], dates: [])
+        XCTAssertEqual(Event.doesOverlap(event: confictingEvent2, otherEvent: confictingEvent1), true)
         
-        XCTAssertEqual(conflictingCalendar.conflictingEvents().count, 2)
+        XCTAssertEqual(facebookCalendar.calendarDays[0].conflictingEvents().count, 0)
+        XCTAssertEqual(facebookCalendar.calendarDays[6].conflictingEvents().count, 3)
+        
         
         
     }
     
-    
-    func testEventsOccuringOnDay() {
-        let events: [Event] = FacebookCalendar.getCalendar().events
-        let calendar = NSCalendar.current
-        let date1Components = DateComponents(year: 2018, month: 11, day: 7, hour: 18, minute: 0)
-        let date1WithTime = calendar.date(from: date1Components)!
-        
-        XCTAssertEqual(facebookCalendar.eventsOccuringOn(date: date1WithTime).count, 2)
-    }
     
     func testEventStartHour() {
         let calendar = NSCalendar.current

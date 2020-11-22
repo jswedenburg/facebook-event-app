@@ -1,35 +1,13 @@
 //
-//  Calendar.swift
+//  FacebookCalendarManager.swift
 //  facebook_event_app
 //
-//  Created by jake on 11/21/20.
+//  Created by jake on 11/22/20.
 //
 
 import Foundation
 
-struct FacebookCalendar {
-    var events: [Event]
-    var dates: [Date]
-    
-    func eventsOccuringOn(date: Date) -> Array<Event> {
-        return events.filter { $0.start.withoutTime() == date.withoutTime() }
-    }
-    
-    func conflictingEvents() -> [Event] {
-        
-        var conflictingEvents: [Event] = []
-        
-        for event in events {
-            
-            for otherEvent in events {
-                if (Event.doesOverlap(event: event, otherEvent: otherEvent) && event != otherEvent) {
-                    conflictingEvents.append(otherEvent)
-                }
-            }
-        }
-        return conflictingEvents
-    }
-    
+class FacebookCalendarManager {
     static func getCalendar() -> FacebookCalendar {
         let decoder = JSONDecoder()
         let dateFormatter = DateFormatter()
@@ -52,12 +30,18 @@ struct FacebookCalendar {
             
         }
         
+        ///Sort events by date
         events.sort(by: {$0.start < $1.start})
         
         let dates = DateHelpers.uniqueDaysFrom(dates: events.map { $0.start })
         
-        return FacebookCalendar(events: events, dates: dates)
+        var calendarDays: [FacebookCalendarDay] = []
+        for date in dates {
+            let eventsOnDate = events.filter { $0.start.withoutTime() == date.withoutTime() }
+            let newDay = FacebookCalendarDay(day: date, events: eventsOnDate)
+            calendarDays.append(newDay)
+        }
+        
+        return FacebookCalendar(calendarDays: calendarDays)
     }
-    
-    
 }

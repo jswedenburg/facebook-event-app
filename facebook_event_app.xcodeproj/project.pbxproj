@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2356123A2569D72A00F0C012 /* FacebookCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235612392569D72A00F0C012 /* FacebookCalendar.swift */; };
+		23561245256AF2D700F0C012 /* FacebookCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23561244256AF2D700F0C012 /* FacebookCalendarManager.swift */; };
 		237619E82567698500BB0C69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237619E72567698500BB0C69 /* AppDelegate.swift */; };
 		237619EA2567698500BB0C69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237619E92567698500BB0C69 /* SceneDelegate.swift */; };
-		237619EC2567698500BB0C69 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237619EB2567698500BB0C69 /* EventViewController.swift */; };
+		237619EC2567698500BB0C69 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237619EB2567698500BB0C69 /* EventListViewController.swift */; };
 		237619EF2567698500BB0C69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 237619ED2567698500BB0C69 /* Main.storyboard */; };
 		237619F12567698500BB0C69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 237619F02567698500BB0C69 /* Assets.xcassets */; };
 		237619F42567698500BB0C69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 237619F22567698500BB0C69 /* LaunchScreen.storyboard */; };
@@ -42,10 +43,11 @@
 
 /* Begin PBXFileReference section */
 		235612392569D72A00F0C012 /* FacebookCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookCalendar.swift; sourceTree = "<group>"; };
+		23561244256AF2D700F0C012 /* FacebookCalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookCalendarManager.swift; sourceTree = "<group>"; };
 		237619E42567698500BB0C69 /* facebook_event_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = facebook_event_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		237619E72567698500BB0C69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		237619E92567698500BB0C69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		237619EB2567698500BB0C69 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		237619EB2567698500BB0C69 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 		237619EE2567698500BB0C69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		237619F02567698500BB0C69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		237619F32567698500BB0C69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,6 +89,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23561249256B057500F0C012 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				23561244256AF2D700F0C012 /* FacebookCalendarManager.swift */,
+				23761A1F256769BB00BB0C69 /* DateHelpers.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		23561250256B058200F0C012 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				23761A1A256769A300BB0C69 /* Event.swift */,
+				235612392569D72A00F0C012 /* FacebookCalendar.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		23561257256B059000F0C012 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2395888F25688D6B00113FF7 /* EventTableViewCell.swift */,
+				237619F22567698500BB0C69 /* LaunchScreen.storyboard */,
+				237619ED2567698500BB0C69 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		23561258256B05B400F0C012 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				237619EB2567698500BB0C69 /* EventListViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		237619DB2567698500BB0C69 = {
 			isa = PBXGroup;
 			children = (
@@ -113,15 +151,12 @@
 				23761A29256769E900BB0C69 /* mock.json */,
 				237619E72567698500BB0C69 /* AppDelegate.swift */,
 				237619E92567698500BB0C69 /* SceneDelegate.swift */,
-				2395888F25688D6B00113FF7 /* EventTableViewCell.swift */,
-				237619EB2567698500BB0C69 /* EventViewController.swift */,
-				237619ED2567698500BB0C69 /* Main.storyboard */,
+				23561258256B05B400F0C012 /* Controllers */,
+				23561257256B059000F0C012 /* Views */,
 				237619F02567698500BB0C69 /* Assets.xcassets */,
-				237619F22567698500BB0C69 /* LaunchScreen.storyboard */,
 				237619F52567698500BB0C69 /* Info.plist */,
-				23761A1A256769A300BB0C69 /* Event.swift */,
-				235612392569D72A00F0C012 /* FacebookCalendar.swift */,
-				23761A1F256769BB00BB0C69 /* DateHelpers.swift */,
+				23561250256B058200F0C012 /* Models */,
+				23561249256B057500F0C012 /* Managers */,
 			);
 			path = facebook_event_app;
 			sourceTree = "<group>";
@@ -277,11 +312,12 @@
 			files = (
 				23761A20256769BB00BB0C69 /* DateHelpers.swift in Sources */,
 				23761A1B256769A300BB0C69 /* Event.swift in Sources */,
-				237619EC2567698500BB0C69 /* EventViewController.swift in Sources */,
+				237619EC2567698500BB0C69 /* EventListViewController.swift in Sources */,
 				2395889025688D6B00113FF7 /* EventTableViewCell.swift in Sources */,
 				237619E82567698500BB0C69 /* AppDelegate.swift in Sources */,
 				237619EA2567698500BB0C69 /* SceneDelegate.swift in Sources */,
 				2356123A2569D72A00F0C012 /* FacebookCalendar.swift in Sources */,
+				23561245256AF2D700F0C012 /* FacebookCalendarManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
