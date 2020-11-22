@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2356123A2569D72A00F0C012 /* FacebookCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235612392569D72A00F0C012 /* FacebookCalendar.swift */; };
 		237619E82567698500BB0C69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237619E72567698500BB0C69 /* AppDelegate.swift */; };
 		237619EA2567698500BB0C69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237619E92567698500BB0C69 /* SceneDelegate.swift */; };
 		237619EC2567698500BB0C69 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237619EB2567698500BB0C69 /* EventViewController.swift */; };
@@ -16,12 +17,10 @@
 		237619FF2567698500BB0C69 /* facebook_event_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237619FE2567698500BB0C69 /* facebook_event_appTests.swift */; };
 		23761A0A2567698500BB0C69 /* facebook_event_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23761A092567698500BB0C69 /* facebook_event_appUITests.swift */; };
 		23761A1B256769A300BB0C69 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23761A1A256769A300BB0C69 /* Event.swift */; };
-		23761A20256769BB00BB0C69 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23761A1F256769BB00BB0C69 /* EventManager.swift */; };
-		23761A25256769D000BB0C69 /* JsonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23761A24256769D000BB0C69 /* JsonManager.swift */; };
+		23761A20256769BB00BB0C69 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23761A1F256769BB00BB0C69 /* DateHelpers.swift */; };
 		23761A2A256769E900BB0C69 /* mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 23761A29256769E900BB0C69 /* mock.json */; };
-		23761A2E25676AAA00BB0C69 /* JsonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23761A24256769D000BB0C69 /* JsonManager.swift */; };
-		23761A3225676AAD00BB0C69 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23761A1F256769BB00BB0C69 /* EventManager.swift */; };
-		23761A3625676AB200BB0C69 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23761A1A256769A300BB0C69 /* Event.swift */; };
+		23761A3225676AAD00BB0C69 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23761A1F256769BB00BB0C69 /* DateHelpers.swift */; };
+		2395889025688D6B00113FF7 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395888F25688D6B00113FF7 /* EventTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		235612392569D72A00F0C012 /* FacebookCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookCalendar.swift; sourceTree = "<group>"; };
 		237619E42567698500BB0C69 /* facebook_event_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = facebook_event_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		237619E72567698500BB0C69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		237619E92567698500BB0C69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,9 +57,9 @@
 		23761A092567698500BB0C69 /* facebook_event_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = facebook_event_appUITests.swift; sourceTree = "<group>"; };
 		23761A0B2567698500BB0C69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23761A1A256769A300BB0C69 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		23761A1F256769BB00BB0C69 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
-		23761A24256769D000BB0C69 /* JsonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonManager.swift; sourceTree = "<group>"; };
+		23761A1F256769BB00BB0C69 /* DateHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
 		23761A29256769E900BB0C69 /* mock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mock.json; sourceTree = "<group>"; };
+		2395888F25688D6B00113FF7 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,14 +113,15 @@
 				23761A29256769E900BB0C69 /* mock.json */,
 				237619E72567698500BB0C69 /* AppDelegate.swift */,
 				237619E92567698500BB0C69 /* SceneDelegate.swift */,
+				2395888F25688D6B00113FF7 /* EventTableViewCell.swift */,
 				237619EB2567698500BB0C69 /* EventViewController.swift */,
 				237619ED2567698500BB0C69 /* Main.storyboard */,
 				237619F02567698500BB0C69 /* Assets.xcassets */,
 				237619F22567698500BB0C69 /* LaunchScreen.storyboard */,
 				237619F52567698500BB0C69 /* Info.plist */,
 				23761A1A256769A300BB0C69 /* Event.swift */,
-				23761A1F256769BB00BB0C69 /* EventManager.swift */,
-				23761A24256769D000BB0C69 /* JsonManager.swift */,
+				235612392569D72A00F0C012 /* FacebookCalendar.swift */,
+				23761A1F256769BB00BB0C69 /* DateHelpers.swift */,
 			);
 			path = facebook_event_app;
 			sourceTree = "<group>";
@@ -274,12 +275,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23761A20256769BB00BB0C69 /* EventManager.swift in Sources */,
+				23761A20256769BB00BB0C69 /* DateHelpers.swift in Sources */,
 				23761A1B256769A300BB0C69 /* Event.swift in Sources */,
 				237619EC2567698500BB0C69 /* EventViewController.swift in Sources */,
-				23761A25256769D000BB0C69 /* JsonManager.swift in Sources */,
+				2395889025688D6B00113FF7 /* EventTableViewCell.swift in Sources */,
 				237619E82567698500BB0C69 /* AppDelegate.swift in Sources */,
 				237619EA2567698500BB0C69 /* SceneDelegate.swift in Sources */,
+				2356123A2569D72A00F0C012 /* FacebookCalendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,10 +289,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23761A3625676AB200BB0C69 /* Event.swift in Sources */,
-				23761A3225676AAD00BB0C69 /* EventManager.swift in Sources */,
+				23761A3225676AAD00BB0C69 /* DateHelpers.swift in Sources */,
 				237619FF2567698500BB0C69 /* facebook_event_appTests.swift in Sources */,
-				23761A2E25676AAA00BB0C69 /* JsonManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

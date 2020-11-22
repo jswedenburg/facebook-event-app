@@ -12,29 +12,26 @@ struct Event: Decodable {
     let start: Date
     let end: Date
     
-    static func getAllEvents() -> Array<Event> {
-        let decoder = JSONDecoder()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM d, yyyy hh:mm a"
-        dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.timeZone = TimeZone(abbreviation: "MST")
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
-        
-        var events: Array<Event> = []
-        
-        if let filepath = Bundle.main.path(forResource: "mock", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: filepath), options: .mappedIfSafe)
-                
-                events = try decoder.decode([Event].self, from: data)
-            } catch {
-                print(error)
-                return []
-            }
-        } else {
-            return []
+    var startHour: String {
+        get {
+            return start.eventDateString()
         }
-        return events
+    }
+    
+    var endHour: String {
+        get {
+            return end.eventDateString()
+        }
+    }
+    
+    static func doesOverlap(event: Event, otherEvent: Event) -> Bool {
+        return (event.start < otherEvent.end && otherEvent.start < event.end)
+    }
+}
+
+extension Event: Equatable {
+    static func ==(lhs: Event, rhs: Event) -> Bool {
+        return lhs.title == rhs.title && lhs.start == rhs.start && lhs.end == rhs.end
     }
 }
 
